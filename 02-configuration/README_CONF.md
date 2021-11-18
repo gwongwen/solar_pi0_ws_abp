@@ -35,25 +35,6 @@ You will need to register a new device in your application (with ABP activation 
 
 After the test (test_send_lora.py) purposed in **01-hardware/tests**, you have to paste the file payload_format into the TTN application decoder function so you can read the packets content in real time already decripted.
 
-### Application (receiver)
-
-As the downlink with LoRa is not a possibility, the LoRa node will retrieve the last message from an MQTT server that will be deployed on the server that controlls the device. In this MQTT client, it will be configured to retain the last message until consumed.
-
-    Sleep time reconfiguration: Time to the next time the board will turn herself on. Thiw will be used by the on_init script.
-    The message will follow the structure: reconfig_sleep_time;15 being the second parameter the time in seconds.
-
-## Step 3 : Configuration of the Pi Zero W  as a gateway
-
-To configure the raspberry as a gateway, you have to install the requirements script in **02-configuration/raspberry**.
-
-To run as sudo user, tape : **sudo \\.pp_gtw_config_install.sh** or **sudo bash gtw_config_install.sh**
-
-Then, to run the service, execute the file in **03-run/raspi_side/gateway_mode/run_gateway_node.sh**.
-
-## Step 4 : Configuration your server as a sensor controller service
-
-To begin, you need to install docker and mqtt with the scripts on **02-configuration/server** and the python dependencies. Then, the python service to run will be located in **03-run/server_side/controller_service.py**
-
 # Usage
 
 Once these configuration and installation steps are completed successfully, we will be able to use the connected node autonomously. To do this, we invite you to go to **03-run** folder and read the **READ_RUN.md** document.
