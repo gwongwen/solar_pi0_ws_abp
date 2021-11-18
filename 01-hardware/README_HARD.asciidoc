@@ -62,7 +62,6 @@ According to python3 is installed, run these scripts to chipset radio
 
 ....
 - test_dot_env.py to check the TTN sensor configuration and verify the TTN sensor information
-- test_reconfigure_from_mqtt.py to check the standard for IoT messaging
 - test_rfm9x.py to check the Adafruit radio+oled Bonnet
 - test_send_lora.py to check if a data from the BMP388 can be transmitted on the TTN network application
 ....
