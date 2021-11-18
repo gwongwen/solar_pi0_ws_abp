@@ -50,7 +50,7 @@ In this project, we will use :
 
 ## Solar Pi Platter board
 
-**Todo** add details about the connectivity between the solar pi platter andthe raspberry pi zero w
+**Todo** add details about the connectivity between the solar pi platter and the raspberry pi zero w
 
 ## Adafruit LoRa Radio Bonnet
 
