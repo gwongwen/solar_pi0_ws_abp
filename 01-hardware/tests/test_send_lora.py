@@ -175,9 +175,9 @@ for meas in range (0, 15, 1):
     display.text('Retrieving data', 10, 0, 1)
     display.show()
 
-    time.sleep(2)
+    time.sleep(1)
     
     sendDataTTN(getPayloadMockBMP388())
     print("packet sent!")
 
-    time.sleep(3)
+    time.sleep(2)
