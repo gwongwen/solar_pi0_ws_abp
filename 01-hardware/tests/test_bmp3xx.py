@@ -1,14 +1,14 @@
 
-# SPDX-FileCopyrightText: 2021 ladyada for Adafruit Industries
-# SPDX-License-Identifier: MIT
-# for youpi project: version 1.0, no change
+#! /usr/bin/env python3
+# test for bmp388 weather sensor 
+# version 1.0 - 19/11/21
 
 import time
 import board
 import adafruit_bmp3xx
 
 # create library object using our Bus I2C port
-i2c = board.I2C()  # uses board.SCL and board.SDA
+i2c = board.I2C()                           # uses board.SCL and board.SDA
 bmp = adafruit_bmp3xx.BMP3XX_I2C(i2c)
 
 # change this to match the location's pressure (hPa) at sea level
