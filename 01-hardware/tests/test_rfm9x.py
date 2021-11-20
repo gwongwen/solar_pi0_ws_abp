@@ -1,8 +1,7 @@
-"""
-Wiring Check, Pi Radio w/RFM9x
-Learn Guide: https://learn.adafruit.com/lora-and-lorawan-for-raspberry-pi
-Author: Brent Rubell for Adafruit Industries
-"""
+#! /usr/bin/env python3
+# test for rfm9x chipset radio
+# version 1.0 - 19/11/21
+
 import time
 import busio
 from digitalio import DigitalInOut, Direction, Pull
