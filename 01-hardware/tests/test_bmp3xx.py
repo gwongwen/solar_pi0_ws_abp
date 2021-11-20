@@ -1,6 +1,7 @@
 
 # SPDX-FileCopyrightText: 2021 ladyada for Adafruit Industries
 # SPDX-License-Identifier: MIT
+# for youpi project: version 1.0, no change
 
 import time
 import board
