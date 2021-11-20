@@ -1,10 +1,11 @@
-# 
+#! /usr/bin/env python3
+# test for parallel communication between sensor and radio bonnet i2c bus
+# version 1.0 - 19/11/21
 
 from dotenv import load_dotenv
-import threading,time,subprocess,busio,board,adafruit_ssd1306,adafruit_bmp3xx,os,sys,random
+import time,busio,board,adafruit_ssd1306,adafruit_bmp3xx
 from digitalio import DigitalInOut, Direction, Pull
 from adafruit_tinylora.adafruit_tinylora import TTN, TinyLoRa
-from pathlib import Path
 from busio import I2C
 
 # link buttons
