@@ -22,7 +22,7 @@ bmp.temperature_oversampling = 1
 # separate temperature sensor to calibrate this one.
 temperature_offset = -5
 
-while True:
+for meas in range (0,5,1):
     print("\nTemperature: %0.1f C" % (bmp.temperature + temperature_offset))
     print("Pressure: %0.3f hPa" % bmp.pressure)
     print("Altitude = %0.2f meters" % bmp.altitude)
