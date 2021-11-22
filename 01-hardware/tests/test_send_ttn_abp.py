@@ -2,41 +2,9 @@
 # test: send physical data from sensor to LoRaWAN TTN by ABP identification
 # version 1.0 - 19/11/21
 
-import sys,adafruit_ssd1306,adafruit_bmp3xx,board
+import sys, adafruit_ssd1306, adafruit_bmp3xx, board
 from digitalio import DigitalInOut, Direction, Pull
 from time import sleep
-sys.path.insert(0, '/home/pi/solar_pi0_ws_otaa/01-hardware/SX127x')
-from SX127x.LoRa import *
-from SX127x.LoRaArgumentParser import LoRaArgumentParser
-from SX127x.board_config import BOARD
-sys.path.insert(0, '/home/pi/solar_pi0_ws_otaa/04-lorawan')
-from LoRaWAN.MHDR import MHDR
-from random import randrange
-
-BOARD.setup()
-parser = LoRaArgumentParser("LoRaWAN sender")
-
-class LoRaWANsend(LoRa):
-    def __init__(self, devaddr = [], nwkey = [], appkey = [], verbose = False):
-        super(LoRaWANsend, self).__init__(verbose)
-        self.devaddr = devaddr
-        self.nwkey = nwkey
-        self.appkey = appkey
-
-    def on_tx_done(self):
-        self.set_mode(MODE.STDBY)
-        self.clear_irq_flags(TxDone=1)
-        print("TxDone")
-        sys.exit(0)
-
-    def start(self):
-        lorawan = LoRaWAN.new(nwskey, appskey)
-        lorawan.create(MHDR.UNCONF_DATA_UP, {'devaddr': devaddr, 'fcnt': 1, 'data': list(map(ord, 'Python rules!')) })
-
-        self.write_payload(lorawan.to_raw())
-        self.set_mode(MODE.TX)
-        while True:
-            sleep(1)
 
 def getPayloadMockBMP388():
     press_val = bmp.pressure
@@ -81,19 +49,19 @@ def sendDataTTN(data):
 
 # init
 devaddr = [0x26, 0x01, 0x3D, 0x54]
-nwskey = [0x0F, 0xFE, 0xDF, 0x1D, 0x36, 0x6D, 0x51, 0x89, 0x76, 0xD7, 0x76, 0xBB, 0x92, 0xA5, 0x9A, 0xE9]
-appskey = [ 0x4A, 0xD7, 0xB6, 0x3F, 0x86, 0xAB, 0xC7, 0x54, 0xCF, 0x26, 0x8E, 0xE5, 0x60, 0xDE, 0x1C, 0x99]
-lora = LoRaWANsend(False)
+nwkey = [0x0F, 0xFE, 0xDF, 0x1D, 0x36, 0x6D, 0x51, 0x89, 0x76, 0xD7, 0x76, 0xBB, 0x92, 0xA5, 0x9A, 0xE9]
+app = [ 0x4A, 0xD7, 0xB6, 0x3F, 0x86, 0xAB, 0xC7, 0x54, 0xCF, 0x26, 0x8E, 0xE5, 0x60, 0xDE, 0x1C, 0x99]
 
-# setup
-lora.set_mode(MODE.SLEEP)
-lora.set_dio_mapping([1,0,0,0,0,0])
-lora.set_freq(868.1)
-lora.set_pa_config(pa_select=1)
-lora.set_spreading_factor(7)
-lora.set_pa_config(max_power=0x0F, output_power=0x0E)
-lora.set_sync_word(0x34)
-lora.set_rx_crc(True)
+# TinyLoRa configuration
+spi = busio.SPI(board.SCK, MOSI=board.MOSI, MISO=board.MISO)
+cs = DigitalInOut(board.CE1)
+irq = DigitalInOut(board.D22)
+rst = DigitalInOut(board.D25)
+
+# initialize ThingsNetwork configuration
+ttn_config = TTN(devaddr, nwkey, app, country=EU)
+# initialize lora object
+lora = TinyLoRa(spi, cs, irq, rst, ttn_config)
 
 # create the i2c interface
 i2c = board.I2C()   # uses board.SCL and board.SDA
@@ -127,20 +95,6 @@ display.fill(0)
 display.show()
 width = display.width
 height = display.height
-
-print(lora)
-assert(lora.get_agc_auto_on() == 1)
-
-try:
-    print("Sending LoRaWAN message\n")
-    lora.start()
-except KeyboardInterrupt:
-    sys.stdout.flush()
-    print("\nKeyboardInterrupt")
-finally:
-    sys.stdout.flush()
-    lora.set_mode(MODE.SLEEP)
-    BOARD.teardown()
 
 # 2b array to store sensor data
 data = bytearray(9)
