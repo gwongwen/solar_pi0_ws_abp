@@ -1,6 +1,6 @@
 #! /usr/bin/env python3
 # test: send physical data from sensor to LoRaWAN TTN by ABP identification
-# version 1.0 - 19/11/21
+# version 1.0 - 11/23/21
 
 import adafruit_ssd1306, adafruit_bmp3xx, board
 from digitalio import DigitalInOut, Direction, Pull
@@ -61,6 +61,7 @@ rst = DigitalInOut(board.D25)
 
 # initialize ThingsNetwork configuration
 ttn_config = TTN(devaddr, nwkey, app, country=EU)
+
 # initialize lora object
 lora = TinyLoRa(spi, cs, irq, rst, ttn_config)
 
@@ -97,7 +98,7 @@ display.show()
 width = display.width
 height = display.height
 
-# 2b array to store sensor data
+# 9b array to store sensor data
 data = bytearray(9)
 
 for meas in range (0, 15, 1):
