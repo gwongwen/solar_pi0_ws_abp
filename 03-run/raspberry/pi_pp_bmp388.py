@@ -1,10 +1,11 @@
 #! /usr/bin/env python3
 # send physical data from sensor to LoRaWAN TTN by ABP identification
 # Pi Platter board wakes up Pi zero, then Pi zero takes measurements and send to TTN application. Once it's done, Pi Platter board shutdown Pi zero
-# version 1.0 - 22/11/21
+# version 1.0 - 11/23/21
 
-import sys, adafruit_ssd1306, adafruit_bmp3xx, board
+import adafruit_bmp3xx, board
 from digitalio import DigitalInOut, Direction, Pull
+from adafruit_tinylora.adafruit_tinylora import TTN, TinyLoRa
 from time import sleep
 
 def getPayloadMockBMP388():
@@ -44,9 +45,6 @@ def encodePayload(pressure,temperature,altitude):
 def sendDataTTN(data):
     lora.send_data(data, len(data), lora.frame_counter)
     lora.frame_counter += 1
-    display.fill(0)
-    display.text('Packet sent', 10, 0, 1)
-    display.show()
 
 # init
 devaddr = [0x26, 0x01, 0x3D, 0x54]
@@ -61,15 +59,12 @@ rst = DigitalInOut(board.D25)
 
 # initialize ThingsNetwork configuration
 ttn_config = TTN(devaddr, nwkey, app, country=EU)
+
 # initialize lora object
 lora = TinyLoRa(spi, cs, irq, rst, ttn_config)
 
 # create the i2c interface
 i2c = board.I2C()   # uses board.SCL and board.SDA
- 
-# 128x32 OLED display
-reset_pin = DigitalInOut(board.D4)
-display = adafruit_ssd1306.SSD1306_I2C(128, 32, i2c, reset=reset_pin)
 
 # create library object using our Bus I2C port
 bmp = adafruit_bmp3xx.BMP3XX_I2C(i2c)
@@ -79,23 +74,6 @@ bmp.sea_level_pressure = 1013.25
 bmp.pressure_oversampling = 1
 bmp.temperature_oversampling = 1
 temperature_offset = -5
-
-# link buttons
-btnA = DigitalInOut(board.D5) # button A
-btnA.direction = Direction.INPUT
-btnA.pull = Pull.UP
-btnB = DigitalInOut(board.D6) # button B
-btnB.direction = Direction.INPUT
-btnB.pull = Pull.UP
-btnC = DigitalInOut(board.D12) # button C
-btnC.direction = Direction.INPUT
-btnC.pull = Pull.UP
-
-# clear the display.
-display.fill(0)
-display.show()
-width = display.width
-height = display.height
 
 # 2b array to store sensor data
 data = bytearray(9)
