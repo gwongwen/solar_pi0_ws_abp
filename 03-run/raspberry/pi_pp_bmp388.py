@@ -4,7 +4,7 @@
 # version 1.0 - 11/23/21
 
 import adafruit_bmp3xx, board
-from digitalio import DigitalInOut, Direction, Pull
+from digitalio import DigitalInOut
 from adafruit_tinylora.adafruit_tinylora import TTN, TinyLoRa
 from time import sleep
 
