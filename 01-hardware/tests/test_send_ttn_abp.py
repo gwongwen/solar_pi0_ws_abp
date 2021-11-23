@@ -2,8 +2,9 @@
 # test: send physical data from sensor to LoRaWAN TTN by ABP identification
 # version 1.0 - 19/11/21
 
-import sys, adafruit_ssd1306, adafruit_bmp3xx, board
+import adafruit_ssd1306, adafruit_bmp3xx, board
 from digitalio import DigitalInOut, Direction, Pull
+from adafruit_tinylora.adafruit_tinylora import TTN, TinyLoRa
 from time import sleep
 
 def getPayloadMockBMP388():
