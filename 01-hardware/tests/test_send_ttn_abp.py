@@ -2,10 +2,11 @@
 # test: send physical data from sensor to LoRaWAN TTN by ABP identification
 # version 1.0 - 11/23/21
 
-import adafruit_ssd1306, adafruit_bmp3xx, board
+import adafruit_ssd1306, adafruit_bmp3xx, board, busio, time
 from digitalio import DigitalInOut, Direction, Pull
 from adafruit_tinylora.adafruit_tinylora import TTN, TinyLoRa
 from time import sleep
+from busio import I2C
 
 def getPayloadMockBMP388():
     press_val = bmp.pressure
@@ -60,7 +61,7 @@ irq = DigitalInOut(board.D22)
 rst = DigitalInOut(board.D25)
 
 # initialize ThingsNetwork configuration
-ttn_config = TTN(devaddr, nwkey, app, country=EU)
+ttn_config = TTN(devaddr, nwkey, app, country="EU")
 
 # initialize lora object
 lora = TinyLoRa(spi, cs, irq, rst, ttn_config)
