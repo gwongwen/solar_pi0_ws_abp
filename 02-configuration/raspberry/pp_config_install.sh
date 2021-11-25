@@ -23,13 +23,12 @@ sudo apt-get update
 
 # talkpp and ppd firmwares install
 sudo apt-get install libudev-dev
-cd home/pi/solar_pi0_ws_youpi/02-configuration/raspberry/talkpp
+cd home/pi/solar_pi0_ws_youpi/02-configuration/talkpp
 gcc -o talkpp talkpp.c -ludev
 sudo mv talkpp /usr/local/bin
-sudo chmod 775 /usr/local/bin/talkpp
 gcc -o ppd ppd.c -ludev
 sudo mv ppd /usr/local/bin
-cd ../../..
+cd ../..
 
 # python install and dependencies
 sudo apt-get install -y python3-pip python3-dev i2c-tools python3-smbus python3-spidev python3-setuptools
