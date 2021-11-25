@@ -2,10 +2,8 @@
 # test for parallel communication between sensor and radio bonnet i2c bus
 # version 1.0 - 19/11/21
 
-from dotenv import load_dotenv
 import time,busio,board,adafruit_ssd1306,adafruit_bmp3xx
 from digitalio import DigitalInOut, Direction, Pull
-from adafruit_tinylora.adafruit_tinylora import TTN, TinyLoRa
 from busio import I2C
 
 # link buttons
@@ -51,7 +49,7 @@ spi = busio.SPI(board.SCK, MOSI=board.MOSI, MISO=board.MISO)
 
 for meas in range (0,5,1):
     msg = ''
-    msg += "Temperature: %0.1f C\n" % bmp.temperature + temperature_offset
+    msg += "\nTemperature: %0.1f C\n" % bmp.temperature + temperature_offset
     msg += "Pressure: %0.3f hPa\n" % bmp.pressure
     msg += "Altitude = %0.2f meters\n" % bmp.altitude
 
