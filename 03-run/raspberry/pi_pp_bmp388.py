@@ -3,48 +3,46 @@
 # Pi Platter board wakes up Pi zero, then Pi zero takes measurements and send to TTN application. Once it's done, Pi Platter board shutdown Pi zero
 # version 1.0 - 11/23/21
 
-import adafruit_bmp3xx, board
-from digitalio import DigitalInOut
+import adafruit_ssd1306, adafruit_bmp3xx, board, busio, time
+from digitalio import DigitalInOut, Direction, Pull
 from adafruit_tinylora.adafruit_tinylora import TTN, TinyLoRa
 from time import sleep
+from busio import I2C
 
 def getPayloadMockBMP388():
     press_val = bmp.pressure
     temp_val = bmp.temperature + temperature_offset
-    alt_val = bmp.altitude
+
     return encodePayload(press_val,temp_val,alt_val)
 
 def encodePayload(pressure,temperature,altitude):
     # encode float as int
     press_val = int(pressure * 100) 
     temp_val = int(temperature * 100)
-    alt_val = int(altitude * 100)
     abs_temp_val = abs(temp_val)
 
     # encode payload as bytes
-    # pressure (needs 3 bytes)
-    data[0] = (press_val >> 16) & 0xff
-    data[1] = (press_val >> 8) & 0xff
-    data[2] = press_val & 0xff
+    # pressure (needs 2 bytes)
+    data[0] = (press_val >> 8) & 0xff
+    data[1] = press_val & 0xff
 
     # temperature (needs 3 bytes 327.67 max value) (signed int)
     if(temp_val < 0):
-        data[3] = 1 & 0xff
+        data[2] = 1 & 0xff
     else:
-        data[3] = 0 & 0xff
-    data[4] = (abs_temp_val >> 8) & 0xff
-    data[5] = abs_temp_val & 0xff
-
-    # altitude (needs 3 bytes)
-    data[6] = (alt_val >> 16) & 0xff
-    data[7] = (alt_val >> 8) & 0xff
-    data[8] = alt_val & 0xff
+        data[2] = 0 & 0xff
+    data[3] = (abs_temp_val >> 8) & 0xff
+    data[4] = abs_temp_val & 0xff
 
     return data
 
 def sendDataTTN(data):
+    lora.set_datarate(SF9BW125)
     lora.send_data(data, len(data), lora.frame_counter)
     lora.frame_counter += 1
+    display.fill(0)
+    display.text('Packet sent', 10, 0, 1)
+    display.show()
 
 # init
 devaddr = [0x26, 0x01, 0x3D, 0x54]
@@ -58,13 +56,17 @@ irq = DigitalInOut(board.D22)
 rst = DigitalInOut(board.D25)
 
 # initialize ThingsNetwork configuration
-ttn_config = TTN(devaddr, nwkey, app, country=EU)
+ttn_config = TTN(devaddr, nwkey, app, country="EU")
 
 # initialize lora object
 lora = TinyLoRa(spi, cs, irq, rst, ttn_config)
 
 # create the i2c interface
 i2c = board.I2C()   # uses board.SCL and board.SDA
+ 
+# 128x32 OLED display
+reset_pin = DigitalInOut(board.D4)
+display = adafruit_ssd1306.SSD1306_I2C(128, 32, i2c, reset=reset_pin)
 
 # create library object using our Bus I2C port
 bmp = adafruit_bmp3xx.BMP3XX_I2C(i2c)
@@ -75,10 +77,27 @@ bmp.pressure_oversampling = 1
 bmp.temperature_oversampling = 1
 temperature_offset = -5
 
-# 2b array to store sensor data
-data = bytearray(9)
+# link buttons
+btnA = DigitalInOut(board.D5) # button A
+btnA.direction = Direction.INPUT
+btnA.pull = Pull.UP
+btnB = DigitalInOut(board.D6) # button B
+btnB.direction = Direction.INPUT
+btnB.pull = Pull.UP
+btnC = DigitalInOut(board.D12) # button C
+btnC.direction = Direction.INPUT
+btnC.pull = Pull.UP
 
-for meas in range (0, 15, 1):
+# clear the display.
+display.fill(0)
+display.show()
+width = display.width
+height = display.height
+
+# 5b array to store sensor data
+data = bytearray(5)
+
+for meas in range (0, 5, 1):
     packet = None
     sendDataTTN(getPayloadMockBMP388())
     time.sleep(2)

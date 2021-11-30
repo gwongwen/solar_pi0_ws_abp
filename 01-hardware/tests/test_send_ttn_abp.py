@@ -93,8 +93,8 @@ display.show()
 width = display.width
 height = display.height
 
-# 9b array to store sensor data
-data = bytearray(9)
+# 5b array to store sensor data
+data = bytearray(5)
 
 for meas in range (0, 15, 1):
     # draw a box to clear the image
