@@ -20,8 +20,8 @@ You will need to register a new device in your application (with ABP activation 
 
     - After that, you have to add a new end device on this application. You have to complete the various fields using the available file .env in 01-hardware/tests in manually mode :
         Frequency Plan                  Europe 863-870 MHz (SF9 for RX2 - Recommanded)
-        LoRaWAN Version                 MAC V1.0.2
-        Regional Parameter Version      PHY V1.0.2 REB B
+        LoRaWAN Version                 MAC V1.0
+        Regional Parameter Version      PHY V1.0
         Activation by personalization   ABP
         Application ID                  solar-pi0-ws-app
         DevUI                           70B3D57ED00485A9
@@ -29,11 +29,7 @@ You will need to register a new device in your application (with ABP activation 
         NwkSKey                         0FFEDF1D366D518976D776BB92A59AE9
         AppSKey                         4AD7B63F86ABC754CF268EE560DE1C99
 
-    - After that, you have to add a gateway :
-        Gateway ID              sola-pi0-ws-gtw
-        Gateway EUI             B827EBFFFF545376
-
-After the test (test_send_lora.py) purposed in **01-hardware/tests**, you have to paste the file payload_format into the TTN application decoder function so you can read the packets content in real time already decripted.
+After the test (test_send_lora.py) purposed in **01-hardware/tests**, you have to paste the **file payload_format.js** into the TTN application decoder function so you can read the packets content in real time already decripted.
 
 # Usage
 
