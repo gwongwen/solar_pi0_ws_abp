@@ -13,9 +13,9 @@ def getPayloadMockBMP388():
     press_val = bmp.pressure
     temp_val = bmp.temperature + temperature_offset
 
-    return encodePayload(press_val,temp_val,alt_val)
+    return encodePayload(press_val,temp_val)
 
-def encodePayload(pressure,temperature,altitude):
+def encodePayload(pressure,temperature):
     # encode float as int
     press_val = int(pressure * 100) 
     temp_val = int(temperature * 100)
