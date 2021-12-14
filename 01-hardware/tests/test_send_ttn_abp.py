@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 # test: send random data  to LoRaWAN TTN by ABP identification
 # version 1.0 - 23/11/21
-# version 1.1 - 14/12/2021 (simplified coded in order to sent only bytes to TTN application)
+# version 1.1 - 14/12/21 (simplified coded in order to sent only bytes to TTN application)
 
 import board, busio, time
 from digitalio import DigitalInOut, Direction, Pull
