@@ -31,7 +31,7 @@ on the same terminal :
     - sudo nano /Volumes/boot/wpa_supplicant.conf
     add this lines to this file :
             ```
-            country=FR (this has to be changed to your county code)
+            country=FR (this has to be changed to your country code)
             ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
             update_config=1
 
@@ -54,7 +54,7 @@ Once the raspberry is fully inited, you can ssh to your raspberry IP and all sho
             change XBLAYOUT="gb" to "fr"
         - sudo nano /etc/wpa-supplicant/wpa_supplicant.conf
             ```
-            country=FR (this has to be changed to your county code)
+            country=FR (this has to be changed to your country code)
             ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
             update_config=1
 
@@ -73,9 +73,9 @@ Once the raspberry is fully inited, you can ssh to your raspberry IP and all sho
             ```
         - sudo nano /etc/network/interfaces
            ```
-           allow-hotplug=wlan0
+           allow-hotplug wlan0
            iface wlan0 inet dhcp
-           wpa-conf /etc/wpa-supplicant/wpa_supplicant.conf
+           wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
            wpa-driver wext
            ```
         - remove dhcpcd (2 dhcp clients installed on buster version !) --> sudo apt-get remove dhcpcd5
@@ -84,7 +84,11 @@ Once the raspberry is fully inited, you can ssh to your raspberry IP and all sho
                 1.      system options
                 S5.     Boot/Autologin
                 B2.     Console Auto Login
-                Ok -->  Finish --> reboot (yes)
+                Ok -->  Finish --> reboot (no)
+                5. Localisation Options
+                L4. WLAN Country (select your country)
+                OK --> Finish --> reboot
+
 
 Now you are inside you will need to install one only dependency by yourself. To be able to access the github repo (and then the install scripts), you have to install git (**sudo apt-get install git**, you might need to apt-get update before).
 
