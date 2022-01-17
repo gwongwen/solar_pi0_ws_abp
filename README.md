@@ -10,7 +10,7 @@ In this project, we seek to make a fully autonomous control unit that will at th
 At first, go to the raspberry pi official site and download the image you want to upload into the raspberry (https://www.raspberrypi.org/downloads/raspberry-pi-os/). For this tutorial, we are going to use the Raspberry Pi OS (32-bit) Lite image (the May 2021 version in our case). Once you have downloaded the image, you have to flash it into your raspberry pi sd card. For this, open 
 a terminal :
 
-    - diskutil disk --> you can see the number of the  diskx (x is the number)
+    - diskutil list --> you can see the number of the  diskx (x is the number) at external, physical line
     - diskutil unmountDisk /dev/diskx
     - sudo dd bs=1 if=/path_to_folder/2021-05-07-raspios-buster-armhf-lite.img of=/dev/diskx
 
