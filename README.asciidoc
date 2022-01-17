@@ -109,9 +109,9 @@ eduroam is protected by 802.1X and the connection cannot be shared
             S5.     Boot/Autologin
             B2.     Console Auto Login
             Ok -->  Finish --> reboot (no)
-            5. Localisation Options
-            L4. WLAN Country (select your country)
-            OK --> Finish --> reboot
+            5.      Localisation Options
+            L4.     WLAN Country (select your country)
+            OK -->  Finish --> reboot
 ....
 
 Now you are inside you will need to install one only dependency by

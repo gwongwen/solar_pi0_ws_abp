@@ -85,9 +85,9 @@ Once the raspberry is fully inited, you can ssh to your raspberry IP and all sho
                 S5.     Boot/Autologin
                 B2.     Console Auto Login
                 Ok -->  Finish --> reboot (no)
-                5. Localisation Options
-                L4. WLAN Country (select your country)
-                OK --> Finish --> reboot
+                5.      Localisation Options
+                L4.     WLAN Country (select your country)
+                OK -->  Finish --> reboot
 
 
 Now you are inside you will need to install one only dependency by yourself. To be able to access the github repo (and then the install scripts), you have to install git (**sudo apt-get install git**, you might need to apt-get update before).
