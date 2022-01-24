@@ -54,9 +54,9 @@ Once the raspberry is fully inited, you can ssh to your raspberry IP and all sho
             change XBLAYOUT="gb" to "fr"
         - sudo nano /etc/wpa-supplicant/wpa_supplicant.conf
             ```
-            country=FR (this has to be changed to your country code)
             ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
             update_config=1
+            country=FR (this has to be changed to your country code)
 
             network={
                     ssid="eduroam"

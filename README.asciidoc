@@ -49,9 +49,9 @@ on the same terminal :
 - sudo nano /Volumes/boot/wpa_supplicant.conf
 add this lines to this file :
         ```
-        country=FR (this has to be changed to your country code)
         ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
         update_config=1
+        country=FR (this has to be changed to your country code)
 
         network={
                 ssid="SSID" (this has to be changed to your network SSID)
