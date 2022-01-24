@@ -12,7 +12,7 @@ a terminal :
 
     - diskutil list --> you can see the number of the  diskx (x is the number) at external, physical line
     - diskutil unmountDisk /dev/diskx
-    - sudo dd bs=1 if=/path_to_folder/2021-05-07-raspios-buster-armhf-lite.img of=/dev/diskx
+    - sudo dd bs=1M if=/path_to_folder/2021-05-07-raspios-buster-armhf-lite.img of=/dev/diskx
 
 Now, you have two choice : you can work with SSH (you work with a personal wifi network) or not (this is the case if you work at university with eduroam wifi network).
 
