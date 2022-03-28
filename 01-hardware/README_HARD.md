@@ -20,16 +20,16 @@ The Solar Pi Platter is a versatile expansion board for the Raspberry Pi Zero W 
     - Watchdog timer
 
 # Description of basic tests
-In basic tests folder, several tests written on python are purposed in order to test separently the  BMP388 sensor and the LoRa protocol. These tests come directly from the manufacturers.
+In basic tests folder, several tests written on python are purposed in order to test separately the  BMP388 sensor and the LoRa protocol. These tests come directly from the manufacturers.
 
 ## Test BMP388 sensor
 According to python3 is installed, run this script **test_bmp3xx.py** to check the pressure/temperature sensor. With coherent values, this means that the sensor is operating correctly.
 
 ## Test I2C bus in parallel mode
-According to python3 is installed, run the script **test_parallel_i2c.py** to check if I2C bus can work on parallel mode (screen display of Adafruit LoRa Radio Bonnet and BMP388 sensor). To verify that they are working properly, we just have to watch if on the screen display there is the same temperature as on the command line. If it is the case, and the temperature is not a nonesense, this would mean that your BMP388 sensor is measuring while the display is done, so it all works well. To verify if the values of your BMP388 sensor are real you can try to touch the sensor and the temperature should increase.
+According to python3 is installed, run the script **test_parallel_i2c.py** to check if I2C bus can work on parallel mode (screen display of Adafruit LoRa Radio Bonnet and BMP388 sensor). To verify that they are working properly, we just have to watch if on the screen display there is the same temperature as on the command line. If it is the case, and the temperature is not a nonsense, this would mean that your BMP388 sensor is measuring while the display is done, so it all works well. To verify if the values of your BMP388 sensor are real you can try to touch the sensor and the temperature should increase.
 
 ## Test LoRa chipset radio RFM95W and the TTN application
-According to python3 is installed, run these scripts to chipset radio (RFM95) and the TTN comunication :
+According to python3 is installed, run these scripts to chipset radio (RFM95) and the TTN communication :
     
     - test_rfm9x.py to check the Adafruit radio+oled Bonnet
     - test_send_lora.py to check if a data from the BMP388 can be transmitted on the TTN network application
@@ -40,7 +40,7 @@ To verify that you receive the packets on your TTN application, run **test_send_
 
 # Description of datasheet/schematic/tutorial
 This folder contains datasheet of the only sensor of our project (Bosch's BMP388) and the LoRa chipset radio (RFM95W inlcude on Adafruit's LoRa Radio Bonnet).
-It also contains the schematic of the Solar Pi Platter board and differents tutorials in order to undertsand I2C bus and use Solar Pi Platter drivers. A brief description of Raspberry Pi Zero W  GPIO board is added.
+It also contains the schematic of the Solar Pi Platter board and different tutorials in order to understand I2C bus and use Solar Pi Platter drivers. A brief description of Raspberry Pi Zero W  GPIO board is added.
 
 **Datasheet**
 
