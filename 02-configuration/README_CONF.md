@@ -19,7 +19,7 @@ You will need to register a new device in your application (with ABP activation 
     - After you account was created, you have to create a new application : Name of this application --> solar-pi0-ws-app
 
     - After that, you have to add a new end device on this application. You have to complete the various fields using the available file .env in 01-hardware/tests in manually mode :
-        Frequency Plan                  Europe 863-870 MHz (SF9 for RX2 - Recommanded)
+        Frequency Plan                  Europe 863-870 MHz (SF9 for RX2 - Recommended)
         LoRaWAN Version                 MAC V1.0
         Regional Parameter Version      PHY V1.0
         Activation by personalization   ABP
@@ -29,7 +29,7 @@ You will need to register a new device in your application (with ABP activation 
         NwkSKey                         0FFEDF1D366D518976D776BB92A59AE9
         AppSKey                         4AD7B63F86ABC754CF268EE560DE1C99
 
-After the test (test_send_lora.py) purposed in **01-hardware/tests**, you have to paste the **file payload_format.js** into the TTN application decoder function so you can read the packets content in real time already decripted.
+After the test (test_send_lora.py) purposed in **01-hardware/tests**, you have to paste the **file payload_format.js** into the TTN application decoder function so you can read the packets content in real time already decrypted.
 
 # Usage
 
@@ -50,7 +50,7 @@ In this project, we will use :
 
 ## Adafruit LoRa Radio Bonnet
 
-The LoRa Radio Bonnet will be directly plugged into the board (as it is an all-ensembled board) and will make use of :
+The LoRa Radio Bonnet will be directly plugged into the board (as it is an all-ensemble board) and will make use of :
 
 **(for the radio module)**
 
