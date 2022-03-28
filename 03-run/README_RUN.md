@@ -4,7 +4,7 @@ We want the script on_init.sh to be runned on system init. To do so, there are m
 To do so we only have to add one line to the /etc/rc.local (need sudoers) before the exit 0:
 
 ```
-sudo /bin/bash /home/pi/solar_pi0_ws_tutorial/03-src_project_v0/on_init.sh
+sudo /bin/bash /home/pi/solar_pi0_ws_abp/03-run/raspberry/on_init.sh
 ```
 
 ### TO DO:
