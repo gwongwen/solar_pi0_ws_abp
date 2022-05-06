@@ -9,4 +9,4 @@ sudo /bin/bash /home/pi/solar_pi0_ws_abp/03-run/raspberry/on_init.sh
 
 ### TO DO:
 ### improve the on_init script and, then, push it in bin/bash
-### deactivate wifi and every ssh method(more lightweight) at the end and only connect when you want to access the mqtt to read more updates
+### deactivate wifi and every ssh method (more lightweight) at the end and only connect when you want to access to read more updates
