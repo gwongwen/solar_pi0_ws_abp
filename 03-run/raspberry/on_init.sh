@@ -18,6 +18,9 @@ echo beginning of script
 cd ../solar_pi0_ws_abp/01-hardware/tests/
 sudo python3 test_send_ttn_abp.py
 
+# sudoer permission
+sudo -s
+
 # times to start and stop each date are military format: HHMM
 STARTOFDAY=0800
 ENDOFDAY=2000
@@ -76,4 +79,3 @@ fi
 echo "shutdown Pi Platter board"
 # and finally shutdown and then power off
 talkpp -c O=15
-shutdown now
