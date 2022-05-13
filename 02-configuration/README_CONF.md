@@ -46,7 +46,7 @@ In this project, we will use :
 
 ## Solar Pi Platter board
 
-**Todo** add details about the connectivity between the solar pi platter and the raspberry pi zero w
+The connectivity between the Solar Pi Platter and the Raspberry Pi Zero W is made with pogo pins, Pi Zero Power for the power and Pi Zero USB for the communication. Power is delivered to the Raspberry Pi Zero using a pair of pogo pins that contact test points on the bottom of the Pi PCB. Connection is made with the Pi’s host USB port via a pair of pogo pins that contact test points on the bottom of the Pi PCB.
 
 ## Adafruit LoRa Radio Bonnet
 
