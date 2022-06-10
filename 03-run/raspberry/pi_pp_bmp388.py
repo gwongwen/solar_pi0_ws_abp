@@ -100,5 +100,5 @@ data = bytearray(5)
 for meas in range (0, 5, 1):
     packet = None
     sendDataTTN(getPayloadMockBMP388())
-    time.sleep(2)
+    time.sleep(5)
 
