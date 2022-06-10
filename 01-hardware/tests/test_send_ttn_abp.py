@@ -24,11 +24,11 @@ ttn_config = TTN(devaddr, nwkey, app, country="EU")
 # initialize lora object
 lora = TinyLoRa(spi, cs, irq, rst, ttn_config)
 
-for meas in range (0, 15, 1):
+for meas in range (0, 5, 1):
     data = bytearray(b"\x43\x57\x54\x46")
     print("Sending packet...")
     lora.send_data(data, len(data), lora.frame_counter)
     lora.frame_counter +=1
     print("Packet sent!")
 
-    time.sleep(2)
+    time.sleep(5)
