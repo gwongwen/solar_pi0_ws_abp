@@ -2,6 +2,7 @@
 # test: send random data  to LoRaWAN TTN by ABP identification
 # version 1.0 - 23/11/21
 # version 1.1 - 14/12/21 (simplified coded in order to sent only bytes to TTN application)
+# version 1.2 - 18/07/22 (add RfM93  modem comfig for meausremennts)
 
 import board, busio, time
 from digitalio import DigitalInOut, Direction, Pull
@@ -23,6 +24,15 @@ ttn_config = TTN(devaddr, nwkey, app, country="EU")
 
 # initialize lora object
 lora = TinyLoRa(spi, cs, irq, rst, ttn_config)
+
+# initialize RFM radio
+rfm9x = adafruit_rfm9x.RFM9x(spi, cs, rst, 868.0)
+
+# Apply new modem config settings to the radio to improve its effective range
+#rfm9x.signal_bandwidth = 62500
+rfm9x.coding_rate = 6
+rfm9x.spreading_factor = 8
+rfm9x.enable_crc = True
 
 for meas in range (0, 5, 1):
     data = bytearray(b"\x43\x57\x54\x46")
