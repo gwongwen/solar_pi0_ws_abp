@@ -2,7 +2,7 @@
 # test: send random data  to LoRaWAN TTN by ABP identification
 # version 1.0 - 23/11/21
 # version 1.1 - 14/12/21 (simplified coded in order to sent only bytes to TTN application)
-# version 1.2 - 18/07/22 (add RfM93  modem comfig for meausremennts)
+# version 1.2 - 20/07/22 (add RFM93  modem comfig for meausremennts)
 
 import board, busio, time
 from digitalio import DigitalInOut, Direction, Pull
@@ -22,6 +22,7 @@ rst = DigitalInOut(board.D25)
 # initialize lora object
 lora = TinyLoRa(spi, cs, irq, rst, ttn_config, channel=0)
 lora.frame_counter = 0
+
 # datarate: bandwidth and spreading factor plan
 # SF7BW125, SF7BW250, SF8BW125, SF9BW125, SF10BW125, SF11BW125, SF12BW125
 lora.set_datarate("SF12BW125")
@@ -41,5 +42,4 @@ for meas in range (0, 5, 1):
     lora.send_data(data, len(data), lora.frame_counter)
     lora.frame_counter +=1
     print("Packet sent!")
-
     time.sleep(5)
