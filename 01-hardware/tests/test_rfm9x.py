@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
 # test for rfm9x chipset radio
 # version 1.0 - 19/11/21
+# version 1.1 - 20/07/22 (add a send packet code)
 
 import time
 import busio
@@ -45,18 +46,23 @@ CS = DigitalInOut(board.CE1)
 RESET = DigitalInOut(board.D25)
 spi = busio.SPI(board.SCK, MOSI=board.MOSI, MISO=board.MISO)
 
+# attempt to set up the RFM9x Module
+try:
+    rfm9x = adafruit_rfm9x.RFM9x(spi, CS, RESET, 868.0)
+    display.text('RFM9x: Detected', 0, 0, 1)
+except RuntimeError as error:
+     # thrown on version mismatch
+    display.text('RFM9x: ERROR', 0, 0, 1)
+    print('RFM9x Error: ', error)
+display.show()
+
 while True:
     # clear the image
     display.fill(0)
 
-    # attempt to set up the RFM9x Module
-    try:
-        rfm9x = adafruit_rfm9x.RFM9x(spi, CS, RESET, 868.0)
-        display.text('RFM9x: Detected', 0, 0, 1)
-    except RuntimeError as error:
-        # thrown on version mismatch
-        display.text('RFM9x: ERROR', 0, 0, 1)
-        print('RFM9x Error: ', error)
+    # send a packet
+    rfm9x.send(bytes("Hello World!\r\n","utf-8"))
+    print("Sent Hello World message!")
 
     # check buttons
     if not btnA.value:
