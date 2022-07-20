@@ -19,20 +19,21 @@ cs = DigitalInOut(board.CE1)
 irq = DigitalInOut(board.D22)
 rst = DigitalInOut(board.D25)
 
-# initialize ThingsNetwork configuration
-ttn_config = TTN(devaddr, nwkey, app, country="EU")
-
 # initialize lora object
-lora = TinyLoRa(spi, cs, irq, rst, ttn_config)
+lora = TinyLoRa(spi, cs, irq, rst, ttn_config, channel=0)
+lora.frame_counter = 0
+# datarate: bandwidth and spreading factor plan
+# SF7BW125, SF7BW250, SF8BW125, SF9BW125, SF10BW125, SF11BW125, SF12BW125
+lora.set_datarate("SF12BW125")
 
 # initialize RFM radio
-rfm9x = adafruit_rfm9x.RFM9x(spi, cs, rst, 868.0)
+#rfm9x = adafruit_rfm9x.RFM9x(spi, cs, rst, 868.1)
 
 # Apply new modem config settings to the radio to improve its effective range
 #rfm9x.signal_bandwidth = 62500
-rfm9x.coding_rate = 6
-rfm9x.spreading_factor = 8
-rfm9x.enable_crc = True
+#rfm9x.coding_rate = 4/5
+#rfm9x.spreading_factor = 8
+#rfm9x.enable_crc = True
 
 for meas in range (0, 5, 1):
     data = bytearray(b"\x43\x57\x54\x46")
