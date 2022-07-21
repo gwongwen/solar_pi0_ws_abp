@@ -5,6 +5,7 @@
 # 19-10-2020 v1.0
 # 26-10-2021 v1.1
 # 18-11-2021 v1.2
+# 21-07-22   v1.3 
 
 if [ "$EUID" -ne 0 ]
   then echo "Please this script needs for root authorisations, execute it as root."
