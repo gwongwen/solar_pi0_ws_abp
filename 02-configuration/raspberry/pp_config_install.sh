@@ -59,3 +59,5 @@ echo "dtoverlay=disable-bt" >> /boot/config.txt
 # disable LED
 echo "dtparam=act_led_trigger=none" >> /boot/config.txt
 echo "dtparam=act_led_activelow=on" >> /boot/config.txt
+
+sudo reboot
