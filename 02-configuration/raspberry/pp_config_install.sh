@@ -48,7 +48,14 @@ echo "i2c-dev" >> /etc/modules
 echo "i2c-bcm2835" >> /etc/modules
 echo "dtparam=i2c_arm=on" >> /boot/config.txt
 echo "dtparam=i2c1=on" >> /boot/config.txt
-echo "dtparam=i2s=on"
+echo "dtparam=i2s=on" >> /boot/config.txt
 
 # activate SPI interface
 echo "dtparam=spi=on" >> /boot/config.txt
+
+# disable BLE
+echo "dtoverlay=disable-bt" >> /boot/config.txt
+
+# disable LED
+echo "dtparam=act_led_trigger=none" >> /boot/config.txt
+echo "dtparam=act_led_activelow=on" >> /boot/config.txt
