@@ -2,7 +2,7 @@
 # test: send random data  to LoRaWAN TTN by ABP identification
 # version 1.0 - 23/11/21
 # version 1.1 - 14/12/21 (simplified coded in order to sent only bytes to TTN application)
-# version 1.2 - 20/07/22 (add RFM93  modem comfig for meausremennts)
+# version 1.2 - 20/07/22 (add Lora parameters (data rate) to test current consumption)
 
 import board, busio, time
 from digitalio import DigitalInOut, Direction, Pull
@@ -26,15 +26,6 @@ lora.frame_counter = 0
 # datarate: bandwidth and spreading factor plan
 # SF7BW125, SF7BW250, SF8BW125, SF9BW125, SF10BW125, SF11BW125, SF12BW125
 lora.set_datarate("SF12BW125")
-
-# initialize RFM radio
-#rfm9x = adafruit_rfm9x.RFM9x(spi, cs, rst, 868.1)
-
-# Apply new modem config settings to the radio to improve its effective range
-#rfm9x.signal_bandwidth = 62500
-#rfm9x.coding_rate = 4/5
-#rfm9x.spreading_factor = 8
-#rfm9x.enable_crc = True
 
 for meas in range (0, 5, 1):
     data = bytearray(b"\x43\x57\x54\x46")
