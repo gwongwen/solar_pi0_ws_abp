@@ -10,7 +10,7 @@ To run as sudo user, tape : **sudo \\.pp_config_install.sh** or **sudo bash pp_c
 
 ## Step 2 : Configuration of the TTN (The Things Network)
 
-To begin, we will need to login into the ttn (https://www.thethingsnetwork.org/) console. Once this is done (as our sensor is both a gateway and a sender) we need to create both a gateway and an application..
+To begin, we will need to login into the ttn (https://www.thethingsnetwork.org/) console. Once this is done (as our sensor is both a gateway and a sender) we need to create both a gateway and an application.
 
 ### Application (sender)
 
@@ -30,6 +30,10 @@ You will need to register a new device in your application (with ABP activation 
         AppSKey                         4AD7B63F86ABC754CF268EE560DE1C99
 
 After the test (test_send_lora.py) purposed in **01-hardware/tests**, you have to paste the **file payload_format.js** into the TTN application decoder function so you can read the packets content in real time already decrypted.
+
+## Step 3 : Configuration of SPIIOT (Youpi Platform Application)
+
+**todo** add procedure to activate a new device
 
 # Usage
 
