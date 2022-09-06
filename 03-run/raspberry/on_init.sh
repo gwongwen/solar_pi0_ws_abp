@@ -3,8 +3,8 @@
 # Shell script designed to take 3 measures within 1'30
 # using a BME680 sensor.
 #
-# The Solar Pi Platter wakes the Pi up every 15 minutes during the day and allows
-# the RFM95W LoRa module the, taking 3 meauses, storing the result in a file
+# The Solar Pi Platter wakes the Pi up every 30 minutes during the day and allows
+# the RFM95W LoRa module the, taking 3 measures, storing the result in a file
 # and sending to LoRa gateway server.
 #
 # The script is designed to be run by /etc/rc.local when the Pi boots.  It looks at
@@ -15,8 +15,8 @@
 echo beginning of script
 
 # test of the transmission
-cd ../solar_pi0_ws_abp/01-hardware/tests/
-sudo python3 test_send_ttn_abp.py
+#cd ../solar_pi0_ws_abp/01-hardware/tests/
+#sudo python3 test_send_ttn_abp.py
 
 # sudoer permission
 sudo -s
