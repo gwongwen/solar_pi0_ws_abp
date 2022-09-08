@@ -1,11 +1,9 @@
-#!/bin/bash
-#
+#! /usr/bin/env python3
 # solar_pi0_ws install requirements
-# 
-# 19-10-2020 v1.0
-# 26-10-2021 v1.1
-# 18-11-2021 v1.2
-# 21-07-2022 v1.3 
+# version 1.0 - 19/10/20
+# version 1.1 - 26/10/21 (bug fixes of talkpp and ppd path install)
+# version 1.2 - 18/11/21 ()
+# version 1.3 - 21/07/22 (add commands to disable BLE, HDMI and LED) 
 
 if [ "$EUID" -ne 0 ]
   then echo "Please this script needs for root authorisations, execute it as root."
