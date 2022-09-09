@@ -1,5 +1,5 @@
 #! /usr/bin/env python3
-# test: send random data  to LoRaWAN TTN by ABP identification
+# test: send random data to LoRaWAN TTN by ABP identification
 # version 1.0 - 23/11/21
 # version 1.1 - 14/12/21 (simplified coded in order to sent only bytes to TTN application)
 # version 1.2 - 20/07/22 (add Lora parameters (data rate) to test current consumption)
