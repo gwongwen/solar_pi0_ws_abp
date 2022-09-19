@@ -4,8 +4,8 @@
 # using a BME680 sensor.
 #
 # The Solar Pi Platter wakes the Pi up every 30 minutes during the day and allows
-# the RFM95W LoRa module the, taking 3 measures, storing the result in a file
-# and sending to LoRa gateway server.
+# the RFM95W LoRa module, taking 3 measures every 30 seconds, storing the power information in a file
+# file and sending to LoRa gateway server.
 #
 # The script is designed to be run by /etc/rc.local when the Pi boots.  It looks at
 # the power-up reason and does not execute if the Pi was powered on because the user
@@ -13,10 +13,6 @@
 #
 
 echo beginning of script
-
-# test of the transmission
-#cd ../solar_pi0_ws_abp/01-hardware/tests/
-#sudo python3 test_send_ttn_abp.py
 
 # sudoer permission
 sudo -s
@@ -62,6 +58,9 @@ echo "alarm ON"
 # enable the alarm
 talkpp -c C0=1
 
+# get the current board status
+STATUS=$(talkpp -c S)
+
 echo "battery test"
 # read battery voltage
 BATT=$(talkpp -c B)
@@ -72,6 +71,7 @@ if [ $BATT -lt 3.45 ]; then
 else
     echo "run python script to read sensor and send data to TTN"
     # initialisation of our raspberry pi zero
+	echo $MYDATE,$BATT,$STATUS >> ../solar_pi0_ws_abp/05-Data/power_info.txt
 	cd ../solar_pi0_ws_abp/03-run/raspberry
     sudo python pi_pp_bmp388.py
 fi
