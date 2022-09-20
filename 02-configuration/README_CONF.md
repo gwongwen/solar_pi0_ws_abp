@@ -18,7 +18,7 @@ You will need to register a new device in your application (with ABP activation 
 
     - After you account was created, you have to create a new application : Name of this application --> solar-pi0-ws-app
 
-    - After that, you have to add a new end device on this application. You have to complete the various fields using the available file .env in 01-hardware/tests in manually mode :
+    - After that, you have to add a new end device on this application. You have to complete the various fields using the available data below in manually mode :
         Frequency Plan                  Europe 863-870 MHz (SF9 for RX2 - Recommended)
         LoRaWAN Version                 MAC V1.0
         Regional Parameter Version      PHY V1.0
@@ -33,7 +33,22 @@ After the test (test_send_lora.py) purposed in **01-hardware/tests**, you have t
 
 ## Step 3 : Configuration of SPIIOT (Youpi Platform Application)
 
-**todo** add procedure to activate a new device
+ChirpStack is an open-source LoRaWAN Network Server which can be used to to setup LoRaWAN networks. ChirpStack provides a web-interface for the management of gateways, devices and tenants as well to setup data integrations with the major cloud providers, databases and services commonly used for handling device data.
+You have to have permission to the administrator to enter to the SPIIOT platform. So, you have to ask Login/Password to your administrator to enter to the ChirpStack application (http://spiiot.citi.insa-lyon.fr:8080/#/login).
+
+    - After you account was created, you have to open **tralala** application
+    - After that, you have to add a new end device on this application. You have to complete the various fields using the available data below in manually mode :
+        Device name                     tralala-prodxx
+        Devcie description              tralala production devcie
+        Check the box "Disable frame-counter validation"
+        Device EUI                      check "generate random" to obtain random DevEUI address
+        check "Create Device"
+    - After that, you have to activate the device. So, you have to go to Activation field :
+        generate a random Device Adrress
+        NwkSKey                         0FFEDF1D366D518976D776BB92A59AE9
+        AppSKey                         4AD7B63F86ABC754CF268EE560DE1C99
+
+After the test (test_send_lora.py) purposed in **01-hardware/tests**, you have to paste the **file payload_format.js** into theLORAWAN FRAMES application decoder function so you can read the packets content in real time already decrypted.
 
 # Usage
 
