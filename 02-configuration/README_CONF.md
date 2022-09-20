@@ -10,7 +10,7 @@ To run as sudo user, tape : **sudo \\.pp_config_install.sh** or **sudo bash pp_c
 
 ## Step 2 : Configuration of the TTN (The Things Network)
 
-To begin, we will need to login into the ttn (https://www.thethingsnetwork.org/) console. Once this is done (as our sensor is both a gateway and a sender) we need to create both a gateway and an application.
+To begin, we will need to login into the ttn (https://www.thethingsnetwork.org/) console. Once this is done (as our sensor is only a sender), we need to create both a gateway and an application. Choose a gateway near your country, for example Europe 1, Dublin.
 
 ### Application (sender)
 
@@ -33,13 +33,16 @@ After the test (test_send_lora.py) purposed in **01-hardware/tests**, you have t
 
 ## Step 3 : Configuration of SPIIOT (Youpi Platform Application)
 
-ChirpStack is an open-source LoRaWAN Network Server which can be used to to setup LoRaWAN networks. ChirpStack provides a web-interface for the management of gateways, devices and tenants as well to setup data integrations with the major cloud providers, databases and services commonly used for handling device data.
-You have to have permission to the administrator to enter to the SPIIOT platform. So, you have to ask Login/Password to your administrator to enter to the ChirpStack application (http://spiiot.citi.insa-lyon.fr:8080/#/login).
+ChirpStack is an open-source LoRaWAN Network Server which can be used to to setup LoRaWAN networks. ChirpStack provides a web-interface for the management of gateways, devices and tenants as well to setup data integrations with the major cloud providers, databases and services commonly used for handling device data. An application for using Solar Pi Platter device has been created, her name is **TRALALA** and you can create and add new devcies to this application. The gateway has also been created : SPIIOT-Chappe-Indoor_CITI-Level-2.
 
-    - After you account was created, you have to open **tralala** application
+### Application (sender)
+
+You have to have permission of the administrator to enter to the SPIIOT platform. So, you have to ask Login/Password to your administrator in order to use the ChirpStack application (http://spiiot.citi.insa-lyon.fr:8080/#/login). Once this is done, we need to create devices.
+
+    - After you account was created, you have to open tralala application
     - After that, you have to add a new end device on this application. You have to complete the various fields using the available data below in manually mode :
         Device name                     tralala-prodxx
-        Devcie description              tralala production devcie
+        Devcie description              tralala production device
         Check the box "Disable frame-counter validation"
         Device EUI                      check "generate random" to obtain random DevEUI address
         check "Create Device"
@@ -48,9 +51,9 @@ You have to have permission to the administrator to enter to the SPIIOT platform
         NwkSKey                         0FFEDF1D366D518976D776BB92A59AE9
         AppSKey                         4AD7B63F86ABC754CF268EE560DE1C99
 
-After the test (test_send_lora.py) purposed in **01-hardware/tests**, you have to paste the **file payload_format.js** into theLORAWAN FRAMES application decoder function so you can read the packets content in real time already decrypted.
+After the test (test_send_lora.py) purposed in **01-hardware/tests**, you have to paste the **file payload_format.js** into the LORAWAN FRAMES application decoder function so you can read the packets content in real time already decrypted.
 
-# Usage
+# Usage 
 
 Once these configuration and installation steps are completed successfully, we will be able to use the connected node autonomously. To do this, we invite you to go to **03-run** folder and read the **READ_RUN.md** document.
 
