@@ -119,7 +119,7 @@ The LoRa Radio Bonnet will be directly plugged into the board (as it is an all-e
 
 ## BMP3xy breakout pinout
 
-The idea is to plug a board above the Adafruit LoRa bonnet with tne same pinout (GPIO of standard Pi Zero). As the sensor measures temperature and pressure (so an outdoor mode), and the Solar Pi Platter solution is plugged into a box (so an indoor mode), we have to deport the connection of the sensor board to the Adafruit LoRa bonnet by wires which will be interconnected.
+The idea is to plug a board above the Adafruit LoRa bonnet with tne same pinout (GPIO of standard Pi Zero). As the sensor measures temperature and pressure outside a box, and the Solar Pi Platter solution is plugged inside a box, we have to deport the connection of the sensor board to the Adafruit LoRa bonnet by wires which will be interconnected.
 
 **BMP388**
 
