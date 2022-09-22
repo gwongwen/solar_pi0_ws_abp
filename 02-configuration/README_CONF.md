@@ -10,7 +10,7 @@ To run as sudo user, tape : **sudo \\.pp_config_install.sh** or **sudo bash pp_c
 
 ## Step 2 : Configuration of the TTN (The Things Network)
 
-To begin, we will need to login into the ttn (https://www.thethingsnetwork.org/) console. Once this is done (as our sensor is only a sender), we need to create both a gateway and an application. Choose a gateway near your country, for example Europe 1, Dublin.
+To begin, we will need to login into the ttn (https://www.thethingsnetwork.org/) console. Once this is done and as our sensor is only a sender, we need to create both a gateway and an application. Choose a gateway near your country, for example Europe 1, Dublin.
 
 ### Application (sender)
 
@@ -33,11 +33,11 @@ After the test (test_send_lora.py) purposed in **01-hardware/tests**, you have t
 
 ## Step 3 : Configuration of SPIIOT (Youpi Platform Application)
 
-ChirpStack is an open-source LoRaWAN Network Server which can be used to to setup LoRaWAN networks. ChirpStack provides a web-interface for the management of gateways, devices and tenants as well to setup data integrations with the major cloud providers, databases and services commonly used for handling device data. An application for using Solar Pi Platter device has been created, her name is **TRALALA** and you can create and add new devcies to this application. The gateway has also been created : SPIIOT-Chappe-Indoor_CITI-Level-2.
+ChirpStack is an open-source LoRaWAN Network Server which can be used to to setup LoRaWAN networks. ChirpStack provides a web-interface for the management of gateways, devices and tenants as well to setup data integrations with the major cloud providers, databases and services commonly used for handling device data. An application for using Solar Pi Platter device has been created, her name is **TRALALA** and you can create and add new devcies into this application. The gateway has also been created : **SPIIOT-Chappe-Indoor-CITI-Level-2**.
 
 ### Application (sender)
 
-You have to have permission of the administrator to enter to the SPIIOT platform. So, you have to ask Login/Password to your administrator in order to use the ChirpStack application (http://spiiot.citi.insa-lyon.fr:8080/#/login). Once this is done, we need to create devices.
+You have to have the permission of the administrator to enter into the SPIIOT platform. So, you have to ask Login/Password to your administrator in order to use the ChirpStack application (http://spiiot.citi.insa-lyon.fr:8080/#/login). Once this is done, we need to create devices.
 
     - After you account was created, you have to open tralala application
     - After that, you have to add a new end device on this application. You have to complete the various fields using the available data below in manually mode :
@@ -119,8 +119,28 @@ The LoRa Radio Bonnet will be directly plugged into the board (as it is an all-e
 
 ## BMP3xy breakout pinout
 
-**todo** Add comments when the daugther PCB for sensor will be made. The idea is to plug a board above the Adafruit LoRa bonnet with tne same pinout (GPIO of sytandard Pi Zero).
+The idea is to plug a board above the Adafruit LoRa bonnet with tne same pinout (GPIO of standard Pi Zero). As the sensor measures temperature and pressure (so an outdoor mode), and the Solar Pi Platter solution is plugged into a box (so an indoor mode), we have to deport the connection of the sensor board to the Adafruit LoRa bonnet by wires which will be interconnected.
 
+**BMP388**
+
+    - VDDIO : digital interface supply
+    - VDD : analog supply
+    - SCK : serial clock input
+    - VSS : ground
+    - SDI : serial data input
+    - SDO : serial data output
+    - CSB : chip select
+    - INT : interrupt output
+
+#### BMP3xy breakout pinout
+
+    BMP3xy      LoRA Radio Bonnet
+    VDD         analog supply connected to +3.3V
+    VDDIO       digital supply connected to +3.3V
+    GND         ground connected to GND
+    IO2         SDO I2C address pin select connected GND (1110110 I2C address)
+    SDA         SDI serial I2C data connected to SDA
+    SCL         SCK serial I2C clock connected to SCK
 
 # Documentation about talkpp/ppd drivers
 
