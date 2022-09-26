@@ -1,7 +1,8 @@
 #! /usr/bin/env python3
 # send physical data from sensor to LoRaWAN TTN by ABP identification
 # Pi Platter board wakes up Pi zero, then Pi zero takes measurements and send to TTN application. Once it's done, Pi Platter board shutdown Pi zero
-# version 1.0 - 11/23/21
+# version 1.0 - 23/11/21
+# version 1.2 - 26/09/22 (ß)
 
 import adafruit_ssd1306, adafruit_bmp3xx, board, busio, time
 from digitalio import DigitalInOut, Direction, Pull
