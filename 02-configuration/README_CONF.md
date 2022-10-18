@@ -48,7 +48,7 @@ You have to have the permission of the administrator to enter into the SPIIOT pl
     - After you account was created, you have to open tralala application
     - After that, you have to add a new end device on this application. You have to complete the various fields using the available data below in manually mode :
         Device name                     tralala-prodxx
-        Devcie description              tralala production device
+        Device description              tralala production device
         Check the box "Disable frame-counter validation"
         Device EUI                      check "generate random" to obtain random DevEUI address
         check "Create Device"
@@ -57,6 +57,16 @@ You have to have the permission of the administrator to enter into the SPIIOT pl
         NwkSKey                         0FFEDF1D366D518976D776BB92A59AE9
         AppSKey                         4AD7B63F86ABC754CF268EE560DE1C99
 
+For now, we have four connnected nodes :
+    Device UI number 1                  70B3D57ED00485A9    (experimental node)
+    Device Address                      26013D54
+    Device UI number 2                  53FE3088CD90A8F8    (production node 1)
+    Device Address                      0085BBCA
+    Device UI number 3                  FD82EB4614C577DE    (production node 2)
+    Device Address                      01102734
+    Device UI number 4                  5260A4E9204E92EC    (production node 3)
+    Device Address                      008C2331
+    
 After the test (test_send_lora.py) purposed in **01-hardware/tests**, you have to paste the **file payload_format.js** into the LORAWAN FRAMES application decoder function so you can read the packets content in real time already decrypted.
 
 # Usage 
