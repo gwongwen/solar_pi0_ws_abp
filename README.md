@@ -2,6 +2,7 @@
 
 ## Description
 In this project, we seek to make a fully autonomous control unit that will at the same time communicate sensor data through LoRa and receive LoRa packages excersing as LoRa Gateway. Also, the periodicity of this process will change depending on external factors (battery %, sunshine... ) and the LoRa Messages content. Some experimemts are also envisaged in order to:
+
         - determine the most accurate consumption of a LoraWAN send packet
         - determine the consumption of Pi Platter board
         - determine the consumtption of differents services of Raspbian OS
