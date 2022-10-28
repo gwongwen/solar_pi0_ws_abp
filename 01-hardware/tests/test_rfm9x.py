@@ -63,6 +63,7 @@ rfm9x.signal_bandwidth = 62500
 rfm9x.coding_rate = 4/5
 rfm9x.spreading_factor = 8
 rfm9x.enable_crc = True
+rfm9x.tx_power = 17
 
 while True:
     # clear the image
