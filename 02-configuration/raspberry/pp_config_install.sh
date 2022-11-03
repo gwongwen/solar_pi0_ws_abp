@@ -22,7 +22,7 @@ sudo apt-get update
 
 # talkpp and ppd firmwares install
 sudo apt-get install libudev-dev
-cd ../solar_pi0_ws_abp/02-configuration/talkpp
+cd ~/solar_pi0_ws_abp/02-configuration/talkpp
 gcc -o talkpp talkpp.c -ludev
 sudo mv talkpp /usr/local/bin
 gcc -o ppd ppd.c -ludev
