@@ -30,7 +30,7 @@ sudo mv ppd /usr/local/bin
 cd ../..
 
 # python install and dependencies
-sudo apt-get install -y python3-pip python3-dev i2c-tools python3-smbus python3-spidev python3-setuptools
+sudo apt-get install -y python3-pip python3-dev i2c-tools python3-smbus python3-spidev python3-setuptools python3-rpi.gpio
 sudo pip3 install python-dotenv
 
 # LoRa Bonnet dependencies 
