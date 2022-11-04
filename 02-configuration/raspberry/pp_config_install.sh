@@ -4,7 +4,7 @@
 # version 1.1 - 26/10/21 (bug fixes of talkpp and ppd path install)
 # version 1.2 - 18/11/21 ()
 # version 1.3 - 21/07/22 (add commands to disable BLE, HDMI and LED) 
-
+# version 1.4 - 04/11/22 (change talkpp directory)
 if [ "$EUID" -ne 0 ]
   then echo "Please this script needs for root authorisations, execute it as root."
   exit
@@ -22,7 +22,7 @@ sudo apt-get update
 
 # talkpp and ppd firmwares install
 sudo apt-get install libudev-dev
-cd ~/solar_pi0_ws_abp/02-configuration/talkpp
+cd /home/admin/solar_pi0_ws_abp/02-configuration/talkpp
 gcc -o talkpp talkpp.c -ludev
 sudo mv talkpp /usr/local/bin
 gcc -o ppd ppd.c -ludev
