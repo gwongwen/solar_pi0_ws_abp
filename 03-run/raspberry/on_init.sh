@@ -28,7 +28,7 @@ TIMELAPSE=1800		# 30 mins
 TIMELOWBATT=600		# 10 mins
 
 # get the date from the RTC
-MYDATE=$(talkpp -s)			# device RTC with the current system clock
+MYDATE=$(talkpp -t)			# device RTC with the current system clock --> test ?
 MYHHMM=${MYDATE:4:4}
 
 echo "setup date from RTC"
