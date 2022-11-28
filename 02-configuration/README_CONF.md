@@ -24,7 +24,7 @@ You will need to register a new device in your application (with ABP activation 
         Regional Parameter Version      PHY V1.0
         Activation by personalization   ABP
         Application ID                  solar-pi0-ws-app
-        DevUI number 1                  70B3D57ED00485A9    (experimental node)
+        DevUI number 1                  9E0745D527C4ADC9    (experimental node)
         Device                          26013D54
         DevUI number 2                  53FE3088CD90A8F8    (production node 1)
         Device                          0085BBCA
