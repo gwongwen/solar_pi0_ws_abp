@@ -3,6 +3,7 @@
 # version 1.0 - 19/11/21
 # version 1.1 - 20/07/22 (add a send packet code)
 # version 1.2 - 22//07/22 (add RFM9x configurations for tests)
+# version 1.3 - 28/11/22 (comment "Sent Hello World message!" line)
 
 import time
 import busio
@@ -11,6 +12,7 @@ import board
 
 # import the SSD1306 module.
 import adafruit_ssd1306
+
 # import the RFM9x radio module.
 import adafruit_rfm9x
 
@@ -71,7 +73,7 @@ while True:
 
     # send a packet
     rfm9x.send(bytes("Hello World!\r\n","utf-8"))
-    print("Sent Hello World message!")
+    # print("Sent Hello World message!")
 
     # check buttons
     if not btnA.value:
