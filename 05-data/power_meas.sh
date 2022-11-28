@@ -10,8 +10,6 @@ echo $MYDATE >> /home/rrousseau/solar_pi0_ws_abp/05-data/power_info.txt
 
 itr=1
 BATT=$(talkpp -c B)
-cd /home/rrousseau/solar_pi0_ws_abp/01-hardware/tests
-python3 test_rfm9x.py
 
 # value with talkpp: 3.06 ; value with scope: 3.76 (min value)
 while [[ $BATT>3.05 ]];
