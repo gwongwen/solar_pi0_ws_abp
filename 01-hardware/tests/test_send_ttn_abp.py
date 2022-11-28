@@ -3,6 +3,7 @@
 # version 1.0 - 23/11/21
 # version 1.1 - 14/12/21 (simplified coded in order to sent only bytes to TTN application)
 # version 1.2 - 20/07/22 (add Lora parameters (data rate) to test current consumption)
+# version 1.3 - 28/11/22 (bug fixes about TTN config)
 
 import board, busio, time
 from digitalio import DigitalInOut, Direction, Pull
@@ -18,6 +19,9 @@ spi = busio.SPI(board.SCK, MOSI=board.MOSI, MISO=board.MISO)
 cs = DigitalInOut(board.CE1)
 irq = DigitalInOut(board.D22)
 rst = DigitalInOut(board.D25)
+
+# TTN network configuration
+ttn_config = TTN(devaddr, nwkey, app, country="EU")
 
 # initialize lora object
 lora = TinyLoRa(spi, cs, irq, rst, ttn_config, channel=0)
