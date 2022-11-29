@@ -6,6 +6,7 @@ import time
 import busio
 from digitalio import DigitalInOut, Direction, Pull
 import board
+from talkpp_py import pp_configs, command, write2pp
 
 # import the RFM9x radio module.
 import adafruit_rfm9x
@@ -22,7 +23,6 @@ spi = busio.SPI(board.SCK, MOSI=board.MOSI, MISO=board.MISO)
 try: 
     # initialize RFM radio
     rfm9x = adafruit_rfm9x.RFM9x(spi, CS, RESET, 868.1)
-    display.text('RFM9x: Detected', 0, 0, 1)
 except RuntimeError as error:
      # thrown on version mismatch
     print('RFM9x Error: ', error)
@@ -37,4 +37,4 @@ rfm9x.tx_power = 17
 while True:
     # send a packet
     rfm9x.send(bytes("Hello World!\r\n","utf-8"))
-    time.sleep(0.1)
+    time.sleep(1)
