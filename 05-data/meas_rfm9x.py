@@ -65,5 +65,5 @@ while BATT > 3.05:
     time.sleep(300)
 
 file = open('power_info.txt', 'w')
-print(%itr)
+print("Number of Iteration = " % ITR)
 file.close()
