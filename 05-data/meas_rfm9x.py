@@ -34,7 +34,36 @@ rfm9x.spreading_factor = 8
 rfm9x.enable_crc = True
 rfm9x.tx_power = 17
 
-while True:
+# get info from Pi Platter
+arg = '-s'
+MYDATE = command(arg)
+arg = '-f'
+MYDATE = command(arg)
+
+# print in file
+file = open('power_info.txt', 'w')
+print("Date of the Day" % MYDATE)
+file.close()
+
+# get battery value before sending packet
+bitname = B
+BATT = write2pp(bitname)
+file = open('power_info.txt', 'w')
+print("Battery Value =" % BATT)
+file.close()
+
+ITR = 1
+while BATT > 3.05:
     # send a packet
     rfm9x.send(bytes("Hello World!\r\n","utf-8"))
-    time.sleep(1)
+    BATT = write2pp(bitname)
+    file = open('power_info.txt', 'w')
+    print("Battery Value =" % BATT)
+    itr = itr + 1
+    file.close()
+    # 1 measurement every 5 minutes
+    time.sleep(300)
+
+file = open('power_info.txt', 'w')
+print(%itr)
+file.close()
