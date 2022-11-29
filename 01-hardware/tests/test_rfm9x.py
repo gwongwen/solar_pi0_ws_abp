@@ -73,7 +73,7 @@ while True:
 
     # send a packet
     rfm9x.send(bytes("Hello World!\r\n","utf-8"))
-    # print("Sent Hello World message!")
+    print("Sent Hello World message!")
 
     # check buttons
     if not btnA.value:
