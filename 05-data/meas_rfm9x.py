@@ -25,9 +25,7 @@ try:
     display.text('RFM9x: Detected', 0, 0, 1)
 except RuntimeError as error:
      # thrown on version mismatch
-    display.text('RFM9x: ERROR', 0, 0, 1)
     print('RFM9x Error: ', error)
-display.show()
 
 # Apply new modem config settings to the radio to improve its effective range
 rfm9x.signal_bandwidth = 62500
@@ -37,29 +35,6 @@ rfm9x.enable_crc = True
 rfm9x.tx_power = 17
 
 while True:
-    # clear the image
-    display.fill(0)
-
     # send a packet
     rfm9x.send(bytes("Hello World!\r\n","utf-8"))
-    # print("Sent Hello World message!")
-
-    # check buttons
-    if not btnA.value:
-        # button A pressed
-        display.text('Ada', width-85, height-7, 1)
-        display.show()
-        time.sleep(0.1)
-    if not btnB.value:
-        # button B pressed
-        display.text('Fruit', width-75, height-7, 1)
-        display.show()
-        time.sleep(0.1)
-    if not btnC.value:
-        # button C pressed
-        display.text('Radio', width-65, height-7, 1)
-        display.show()
-        time.sleep(0.1)
-
-    display.show()
     time.sleep(0.1)
