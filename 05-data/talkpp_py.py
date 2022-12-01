@@ -94,7 +94,7 @@ def pp_configs(arg):
 			{'battery voltage':command('B')},
                       	] + status_info()
 	
-        elif arg == 'timers':
+	elif arg == 'timers':
 		return [
 			{'current time':command('T')},
 			{'power off':command('O')},
@@ -103,7 +103,7 @@ def pp_configs(arg):
 			{'wakeup repeat':command('R')},
 			]
 
-        elif arg == 'io':
+	elif arg == 'io':
 		return [
 			{'USB-2':{'setting':command('U1'),'control':{'ON':'U1=1','OFF':'U1=0'}}},
 			{'USB-3':{'setting':command('U2'),'control':{'ON':'U2=1','OFF':'U2=0'}}},
@@ -113,7 +113,7 @@ def pp_configs(arg):
 			{'PWM-2':{'setting':command('P2'),'control':{'+':'P2='+str(int(command('P2'))+3),'-':'P2='+str(int(command('P2'))-3)}}},
 			]
 
-        elif arg == 'control':
+	elif arg == 'control':
 		return [
 			{'C0: Wakeup Enable':{'setting':command('C0'),'control':{'ON':'C0=1','OFF':'C0=0'}}},
 			{'C1: Low Battery Warning Enable':{'setting':command('C1'),'control':{'ON':'C1=1','OFF':'C1=0'}}},
@@ -126,7 +126,7 @@ def pp_configs(arg):
 			{'C8: Watchdog Control':{'setting':command('C8'),'control':{'ON':'C8=1','OFF':'C8=0'}}},
 			]
 
-        elif arg == 'eeprom':
+	elif arg == 'eeprom':
 		return [
 			{'E0: Battery Low Warn Threshold':{'setting':round(float(command('E0'))*0.00423783877,2),'control':{'up':'E0='+str(int(command('E0'))+2),'down':'E0='+str(int(command('E0'))-2)}}},
 			{'E1: Battery Critical Threshold':round(float(command('E1'))*0.00423783877,2)},
@@ -145,7 +145,7 @@ def pp_configs(arg):
                        ]
 
 def main():
-	print "library of functions to speak to the pi platter"
+	print("library of functions to speak to the pi platter")
 
 if __name__ == "__main__":
 	main()
