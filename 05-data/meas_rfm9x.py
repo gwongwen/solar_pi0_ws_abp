@@ -58,8 +58,12 @@ ITR = 1
 LOW_BATT = 3
 
 while BATT > LOW_BATT:
-    # send a packet
+    # Transmit mode - Idle mode, Sleep mode, Listen mode
     rfm9x.send(bytes("Hello World!\r\n","utf-8"))
+    #rfm9x.idle()
+    #rfm9x.sleep()
+    #rfm9x.listen()
+
     # get battery value before sending packet
     arg = 'B'
     BATT = float(command(arg))
