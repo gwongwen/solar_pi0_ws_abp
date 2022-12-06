@@ -1,12 +1,12 @@
 #! /usr/bin/bash
-# first script test to measure baterry discharge time
+# first script test to measure battery discharge time
 
 echo beginning of script
 
 #MYDATE=$(talkpp -t)
 MYDATE=$(talkpp -s)
 MYDATE=$(talkpp -f)
-echo $MYDATE >> power_info.txt
+echo $MYDATE >> batt.txt
 
 itr=1
 BATT=$(talkpp -c B)
@@ -16,9 +16,9 @@ while [[ $BATT>3.05 ]];
 do
 	echo $itr
 	BATT=$(talkpp -c B)
-	echo $BATT >> power_info.txt
+	echo $BATT >> batt.txt
 	((itr++))
 	# 1 measurement every 5 minutes 
 	sleep 300
 done
-echo $itr >> power_info.txt
+echo $itr >> batt.txt

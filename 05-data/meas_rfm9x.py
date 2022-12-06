@@ -41,7 +41,7 @@ arg = '-f'
 MYDATE = command(arg)
 
 # print in file
-with open('power_info.txt', 'a') as f:
+with open('batt.txt', 'a') as f:
     f.write(str(MYDATE))
     f.write('\n')
 
@@ -50,7 +50,7 @@ arg = 'B'
 BATT = float(command(arg))
 
 # print in file
-with open('power_info.txt', 'a') as f:
+with open('batt.txt', 'a') as f:
     f.write(str(BATT))
     f.write('\n')
 
@@ -68,13 +68,13 @@ while BATT > LOW_BATT:
     arg = 'B'
     BATT = float(command(arg))
     # print in file
-    with open('power_info.txt', 'a') as f:
+    with open('batt.txt', 'a') as f:
         f.write(str(BATT))
         f.write('\n')
     ITR = ITR + 1
     # 1 measurement every xx secondes
     time.sleep(60)
     
-with open('power_info.txt', 'a') as f:
+with open('batt.txt', 'a') as f:
     f.write(str(ITR))
     f.write('\n')
