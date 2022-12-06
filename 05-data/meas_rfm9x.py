@@ -41,29 +41,36 @@ arg = '-f'
 MYDATE = command(arg)
 
 # print in file
-file = open('power_info.txt', 'w')
-print("Date of the Day" % MYDATE)
-file.close()
+with open('power_info.txt', 'a') as f:
+    f.write(str(MYDATE))
+    f.write('\n')
 
 # get battery value before sending packet
-bitname = B
-BATT = write2pp(bitname)
-file = open('power_info.txt', 'w')
-print("Battery Value =" % BATT)
-file.close()
+arg = 'B'
+BATT = float(command(arg))
+
+# print in file
+with open('power_info.txt', 'a') as f:
+    f.write(str(BATT))
+    f.write('\n')
 
 ITR = 1
-while BATT > 3.05:
+LOW_BATT = 3
+
+while BATT > LOW_BATT:
     # send a packet
     rfm9x.send(bytes("Hello World!\r\n","utf-8"))
-    BATT = write2pp(bitname)
-    file = open('power_info.txt', 'w')
-    print("Battery Value =" % BATT)
-    itr = itr + 1
-    file.close()
-    # 1 measurement every 5 minutes
-    time.sleep(300)
-
-file = open('power_info.txt', 'w')
-print("Number of Iteration = " % ITR)
-file.close()
+    # get battery value before sending packet
+    arg = 'B'
+    BATT = float(command(arg))
+    # print in file
+    with open('power_info.txt', 'a') as f:
+        f.write(str(BATT))
+        f.write('\n')
+    ITR = ITR + 1
+    # 1 measurement every xx secondes
+    time.sleep(60)
+    
+with open('power_info.txt', 'a') as f:
+    f.write(str(ITR))
+    f.write('\n')
