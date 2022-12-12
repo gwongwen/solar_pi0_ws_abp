@@ -1,5 +1,5 @@
 # Description of Solar Pi Platter Test Files
-In this folder, we will find differnt codes in order to test battery/solar panel performance in different operating modes. In fact, we will improve a strategy of battery optimization in order to have a full autonomous node.
+In this folder, we will find different codes in order to test battery/solar panel performance in different operating modes. In fact, we will improve a strategy of battery optimization in order to have a full autonomous node.
 
 ## talkpp_py.py
 This pyhton code is a communication driver between Pi Platter board and RPi zero.
