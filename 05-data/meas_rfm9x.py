@@ -27,7 +27,7 @@ except RuntimeError as error:
      # thrown on version mismatch
     print('RFM9x Error: ', error)
 
-# Apply new modem config settings to the radio to improve its effective range
+# apply new modem config settings to the radio to improve its effective range
 rfm9x.signal_bandwidth = 62500
 rfm9x.coding_rate = 4/5
 rfm9x.spreading_factor = 8
