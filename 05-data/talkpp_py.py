@@ -1,8 +1,12 @@
+#! /usr/bin/env python3
+# driver for Pi Platter - RPi Zero communication
+# version 1.0 - 12/12/22
+
 import requests 
 import subprocess 
 import os
 
-# Get info from Pi_Platter
+# get info from Pi_Platter
 def command(arg):
 	if arg=='-s' or arg=='-t' or arg=='-f' or arg=='-a' or arg=='-d' or arg=='-w':
 		stout = subprocess.check_output(['talkpp', arg]).strip()
@@ -10,13 +14,13 @@ def command(arg):
 		stout = subprocess.check_output(['talkpp', '-c', arg]).strip()
 	return stout
 
-# Write to Pi_Platter
+# write to Pi_Platter
 def write2pp(bitname, value):
         os.system("talkpp -c {}={}".format(bitname,value))
         check = command(bitname)
         return check
 
-# Decode the integer status code
+# decode the integer status code
 def status_info():
 	bit_desc=['USB Fault Detected', 
         	  'Reserved', 
@@ -52,7 +56,7 @@ def status_info():
 
 	return status
 
-# Decode the analog setting code
+# decode the analog setting code
 def analog_info(arg):
 
         if arg == '0':
@@ -68,7 +72,7 @@ def analog_info(arg):
                 amode = [arg, type(arg)] 
         return amode
 
-# Decode the PWM setting code
+# decode the PWM setting code
 def PWM_info(arg):
 	
 	if arg == '0':
