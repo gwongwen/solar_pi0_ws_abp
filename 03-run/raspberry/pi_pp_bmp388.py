@@ -3,6 +3,7 @@
 # Pi Platter board wakes up Pi zero, then Pi zero takes measurements and send to TTN application. Once it's done, Pi Platter board shutdown Pi zero
 # version 1.0 - 23/11/21
 # version 1.2 - 26/09/22 (ß)
+# version 1.3 - 12/12/22 (button off and poweroff the ssd1306 display after test)
 
 import adafruit_ssd1306, adafruit_bmp3xx, board, busio, time
 from digitalio import DigitalInOut, Direction, Pull
@@ -78,17 +79,6 @@ bmp.pressure_oversampling = 1
 bmp.temperature_oversampling = 1
 temperature_offset = -5
 
-# link buttons
-btnA = DigitalInOut(board.D5) # button A
-btnA.direction = Direction.INPUT
-btnA.pull = Pull.UP
-btnB = DigitalInOut(board.D6) # button B
-btnB.direction = Direction.INPUT
-btnB.pull = Pull.UP
-btnC = DigitalInOut(board.D12) # button C
-btnC.direction = Direction.INPUT
-btnC.pull = Pull.UP
-
 # clear the display.
 display.fill(0)
 display.show()
@@ -103,3 +93,4 @@ for meas in range (0, 3, 1):
     sendDataTTN(getPayloadMockBMP388())
     time.sleep(30)
 
+display.poweroff()
