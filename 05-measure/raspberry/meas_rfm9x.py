@@ -28,7 +28,7 @@ except RuntimeError as error:
     print('RFM9x Error: ', error)
 
 # apply new modem config settings to the radio to improve its effective range
-rfm9x.signal_bandwidth = 62500
+rfm9x.signal_bandwidth = 125000
 rfm9x.coding_rate = 4/5
 rfm9x.spreading_factor = 8
 rfm9x.enable_crc = True
