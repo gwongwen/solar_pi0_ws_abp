@@ -4,15 +4,20 @@
 
 echo beginning of script
 
-# disable BLE
+# enable/disable BLE
 sudo rfkill block bluetooth
+#sudo rfkill unblock bluetooth
 
-# disable LED
-#echo 1 > /sys/class/leds/led0/brightness     # turn on
-echo 0 > /sys/class/leds/led0/brightness     # turn off
+# set the Pi Zero ACT LED trigger to 'none'.
+echo none | sudo tee /sys/class/leds/led0/trigger
+
+# Turn off the Pi Zero ACT LED.
+echo 1 | sudo tee /sys/class/leds/led0/brightness # turn off
+#echo 0 > /sys/class/leds/led0/brightness          # turn on
 
 # disable HDMI output
 sudo /usr/bin/tvservice -o
+#sudo /usr/bin/tvservice -p
 
 #MYDATE=$(talkpp -t)
 MYDATE=$(talkpp -s)
