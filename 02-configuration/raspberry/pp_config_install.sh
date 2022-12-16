@@ -7,6 +7,7 @@
 # version 1.4 - 04/11/22 (change talkpp directory)
 # version 1.5 - 12/12/22 (add stress packets for CPU testing)
 # version 1.6 - 16/12/22 (display current CPU load and CPU temperature)
+
 if [ "$EUID" -ne 0 ]
   then echo "Please this script needs for root authorisations, execute it as root."
   exit
