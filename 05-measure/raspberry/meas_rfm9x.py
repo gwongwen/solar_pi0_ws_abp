@@ -69,9 +69,10 @@ while BATT > LOW_BATT:
     arg = 'B'
     BATT = command(arg)
     a_string = BATT
-    for character in 'WARN: 0':
+    for character in 'WARN: 0':     # warning about talkpp -c B command -> low battery
         a_string = a_string.replace(character, '')
     BATT = float(a_string)
+
     # print in file
     with open('batt.txt', 'a') as f:
         f.write(str(BATT))
