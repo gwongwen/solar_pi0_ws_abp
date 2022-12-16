@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
 # measurement of rfm9x chipset radio
 # version 1.0 - 29/11/22
+# version 1.1 - 16/12/22 (delete warning of talkpp -c B value in while loop)
 
 import time
 import busio
@@ -66,7 +67,11 @@ while BATT > LOW_BATT:
 
     # get battery value before sending packet
     arg = 'B'
-    BATT = float(command(arg))
+    BATT = command(arg)
+    a_string = BATT
+    for character in 'WARN: 0':
+        a_string = a_string.replace(character, '')
+    BATT = float(a_string)
     # print in file
     with open('batt.txt', 'a') as f:
         f.write(str(BATT))
