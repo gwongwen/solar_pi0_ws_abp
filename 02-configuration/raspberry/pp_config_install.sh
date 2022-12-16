@@ -6,6 +6,7 @@
 # version 1.3 - 21/07/22 (add commands to disable BLE, HDMI and LED) 
 # version 1.4 - 04/11/22 (change talkpp directory)
 # version 1.5 - 12/12/22 (add stress packets for CPU testing)
+# version 1.6 - 16/12/22 (display current CPU load and CPU temperature)
 if [ "$EUID" -ne 0 ]
   then echo "Please this script needs for root authorisations, execute it as root."
   exit
@@ -31,7 +32,7 @@ sudo mv ppd /usr/local/bin
 cd ../..
 
 # packets to test RPi CPU for stress testing
-sudo apt-get install stress
+sudo apt-get install stress s-tui
 
 # python install and dependencies
 sudo apt-get install -y python3-pip python3-dev i2c-tools python3-smbus python3-spidev python3-setuptools python3-rpi.gpio
