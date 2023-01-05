@@ -7,6 +7,7 @@
 # version 1.4 - 04/11/22 (change talkpp directory)
 # version 1.5 - 12/12/22 (add stress packets for CPU testing)
 # version 1.6 - 16/12/22 (display current CPU load and CPU temperature)
+# version 1.7 - 05/01/23 (change Stress Terminal UI install)
 
 if [ "$EUID" -ne 0 ]
   then echo "Please this script needs for root authorisations, execute it as root."
@@ -33,7 +34,8 @@ sudo mv ppd /usr/local/bin
 cd ../..
 
 # packets to test RPi CPU for stress testing
-sudo apt-get install stress s-tui
+sudo apt-get -y install stress
+sudo pip install s-tui
 
 # python install and dependencies
 sudo apt-get install -y python3-pip python3-dev i2c-tools python3-smbus python3-spidev python3-setuptools python3-rpi.gpio
