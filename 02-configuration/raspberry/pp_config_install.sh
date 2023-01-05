@@ -33,13 +33,13 @@ gcc -o ppd ppd.c -ludev
 sudo mv ppd /usr/local/bin
 cd ../..
 
-# packets to test RPi CPU for stress testing
-sudo apt-get -y install stress
-sudo pip install s-tui
-
 # python install and dependencies
 sudo apt-get install -y python3-pip python3-dev i2c-tools python3-smbus python3-spidev python3-setuptools python3-rpi.gpio
 sudo pip3 install python-dotenv
+
+# packets to test RPi CPU for stress testing
+sudo apt-get -y install stress
+sudo pip3 install s-tui
 
 # LoRa Bonnet dependencies 
 sudo pip3 install adafruit-circuitpython-ssd1306
