@@ -35,6 +35,7 @@ echo $MYDATE >> batt.txt
 itr=1
 while [ itr -le 200]:
 do
+	echo $itr
 	BATT=$(talkpp -c B)
 	echo $BATT >> batt.txt
 	((itr=itr+1))
