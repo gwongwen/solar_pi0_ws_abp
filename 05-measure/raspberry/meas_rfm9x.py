@@ -56,9 +56,8 @@ with open('batt.txt', 'a') as f:
     f.write('\n')
 
 ITR = 1
-LOW_BATT = 3
 
-while BATT > LOW_BATT:
+while ITR < 200:
     # Transmit mode - Idle mode, Sleep mode, Listen mode
     rfm9x.send(bytes("Hello World!\r\n","utf-8"))
     #rfm9x.idle()
