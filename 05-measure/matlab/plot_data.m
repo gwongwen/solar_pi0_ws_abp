@@ -16,7 +16,7 @@ fileID = fopen('/Users/gwongwen/Documents/projects/youpi_tralala/fig-jan23/N222/
 %fileID = fopen('/Users/gwongwen/Documents/projects/youpi_tralala/fig-jan23/N223/meas_N223_L8.txt','r');
 y = fscanf(fileID, '%f'); % read all the data into y
 
-% indata = textscan(fileID, '%f', 'HeaderLines',1);   % delete first line (date)
+% indata = textscan(fileID, '%f', 'HeaderLines',1);   % read all the data into indata and delete first line (date)
 % fclose(fileID);
 % y = indata{1};
 
