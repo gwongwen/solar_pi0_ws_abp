@@ -12,10 +12,13 @@ set(0,'DefaultAxesFontSize', 20);
 set(0,'DefaultTextFontSize', 20);
 set(0,'DefaultlineLineWidth', 1.5);
 
-%fileID = fopen('/Users/gwongwen/Documents/projects/youpi_tralala/fig-jan23/N222/meas_L8.txt','r');
-fileID = fopen('/Users/gwongwen/Documents/projects/youpi_tralala/fig-jan23/N223/meas_L8.txt','r');
-y = fscanf(fileID, '%f'); % read all the data into B (the date is parsed into three columns)
-fclose(fileID);
+fileID = fopen('/Users/gwongwen/Documents/projects/youpi_tralala/fig-jan23/N222/meas_N222_L8.txt','r');
+%fileID = fopen('/Users/gwongwen/Documents/projects/youpi_tralala/fig-jan23/N223/meas_N223_L8.txt','r');
+y = fscanf(fileID, '%f'); % read all the data into y
+
+% indata = textscan(fileID, '%f', 'HeaderLines',1);   % delete first line (date)
+% fclose(fileID);
+% y = indata{1};
 
 x = (0:length(y)-1)*5;
 x = x';
@@ -38,7 +41,7 @@ figure
 plot(x,y,'b');
 hold on
 plot(x,yfit,'r')
-title('Discharge Node 223 - Lora Packets every 100ms - LED ON - Wifi ON');
+title('Discharge Node 222 - Idle State - LED ON - Wifi ON');
 xlabel('time [min]');
 ylabel('battery level [volt]');
 legend('data','linear');
