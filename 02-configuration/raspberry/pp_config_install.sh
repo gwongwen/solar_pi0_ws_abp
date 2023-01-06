@@ -38,8 +38,7 @@ sudo apt-get install -y python3-pip python3-dev i2c-tools python3-smbus python3-
 sudo pip3 install python-dotenv
 
 # packets to test RPi CPU for stress testing
-sudo apt-get -y install stress
-sudo pip3 install s-tui
+sudo apt-get -y install stress s-tui
 
 # LoRa Bonnet dependencies 
 sudo pip3 install adafruit-circuitpython-ssd1306
