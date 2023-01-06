@@ -63,11 +63,11 @@ echo "dtparam=spi=on" >> /boot/config.txt
 # disable BLE
 echo "dtoverlay=disable-bt" >> /boot/config.txt
 
-# disable LED
-echo "dtparam=act_led_trigger=none" >> /boot/config.txt
-echo "dtparam=act_led_activelow=off" >> /boot/config.txt
-
 # disable HDMI output
 echo "/usr/bin/tvservice -o" >> /etc/rc.local
+
+# disable LED
+#echo "dtparam=act_led_trigger=none" >> /boot/config.txt
+#echo "dtparam=act_led_activelow=off" >> /boot/config.txt
 
 sudo reboot
