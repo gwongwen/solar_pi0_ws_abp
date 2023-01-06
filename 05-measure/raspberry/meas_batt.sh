@@ -18,9 +18,9 @@ echo none | sudo tee /sys/class/leds/led0/trigger
 echo Pi Zero ACT LED trigger OFF
 
 # Turn off the Pi Zero ACT LED.
-echo 1 | sudo tee /sys/class/leds/led0/brightness # turn off
+echo 0 | sudo tee /sys/class/leds/led0/brightness # turn on
 echo Pi Zero ACT LED OFF
-#echo 0 > /sys/class/leds/led0/brightness          # turn on
+#echo 0 > /sys/class/leds/led0/brightness          # turn off
 
 # enable/disable BLE
 sudo rfkill block wifi
