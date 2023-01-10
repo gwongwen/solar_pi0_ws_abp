@@ -26,12 +26,6 @@ echo Pi Zero ACT LED OFF
 #echo 0 > /sys/class/leds/led0/brightness          			    # turn on
 #echo Pi Zero ACT LED ON
 
-# enable/disable BLE
-sudo rfkill block wifi
-echo wifi disable
-#sudo rfkill unblock wifi
-#echo wifi enable
-
 #MYDATE=$(talkpp -t)
 MYDATE=$(talkpp -s)
 MYDATE=$(talkpp -f)
