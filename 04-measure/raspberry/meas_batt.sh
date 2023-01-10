@@ -31,13 +31,16 @@ MYDATE=$(talkpp -s)
 MYDATE=$(talkpp -f)
 echo $MYDATE >> batt.txt
 
-itr=1
-while [ itr -le 200]:
+ITR=1
+BATT=$(talkpp -c B)
+echo $BATT >> batt.txt
+
+while [ $ITR -le 200 ]
 do
-	echo $itr
+	echo $ITR
 	BATT=$(talkpp -c B)
 	echo $BATT >> batt.txt
-	((itr=itr+1))
+	((ITR++))
 	# 1 measurement every 5 minutes 
 	sleep 300
 done
