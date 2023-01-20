@@ -8,6 +8,7 @@
 # version 1.5 - 12/12/22 (add stress packets for CPU testing)
 # version 1.6 - 16/12/22 (display current CPU load and CPU temperature)
 # version 1.7 - 05/01/23 (change Stress Terminal UI install)
+# version 1.8 - 20/01/23 (activate UART)
 
 if [ "$EUID" -ne 0 ]
   then echo "Please this script needs for root authorisations, execute it as root."
