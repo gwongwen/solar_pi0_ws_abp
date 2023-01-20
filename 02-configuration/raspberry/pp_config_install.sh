@@ -59,6 +59,10 @@ echo "dtparam=i2s=on" >> /boot/config.txt
 # activate SPI interface
 echo "dtparam=spi=on" >> /boot/config.txt
 
+# activate UART
+enable_uart=1
+console=serial0
+
 # disable BLE
 echo "dtoverlay=disable-bt" >> /boot/config.txt
 
