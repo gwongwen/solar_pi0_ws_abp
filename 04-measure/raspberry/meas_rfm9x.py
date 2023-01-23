@@ -2,6 +2,7 @@
 # measurement of rfm9x chipset radio
 # version 1.0 - 29/11/22
 # version 1.1 - 16/12/22 (delete warning of talkpp -c B value in while loop)
+# version 1.2 - 23/01/23 (bug fixe about returned value of talkpp)
 
 import time
 import busio
@@ -48,11 +49,11 @@ with open('batt.txt', 'a') as f:
 
 # get battery value before sending packet
 arg = 'B'
-BATT = float(command(arg))
+BATT = str(command(arg))
 
 # print in file
 with open('batt.txt', 'a') as f:
-    f.write(str(BATT))
+    f.write(BATT)
     f.write('\n')
 
 ITR = 1
@@ -66,17 +67,18 @@ while ITR < 200:
 
     # get battery value before sending packet
     arg = 'B'
-    BATT = command(arg)
-    a_string = BATT
-    for character in 'WARN: 0':     # warning about talkpp -c B command -> low battery
-        a_string = a_string.replace(character, '')
-    BATT = float(a_string)
+    BATTWARN = str(command(arg))
+    warn = 'WARN: 0'
+    for char in warn:     # warning about talkpp -c B command -> low battery
+        BATTWARN = BATTWARN.replace(char, '')
+    BATT = BATTWARN
 
     # print in file
     with open('batt.txt', 'a') as f:
-        f.write(str(BATT))
+        f.write(BATT)
         f.write('\n')
     ITR = ITR + 1
+    #print(ITR)
     # 1 measurement every xx secondes
     time.sleep(60)
     
