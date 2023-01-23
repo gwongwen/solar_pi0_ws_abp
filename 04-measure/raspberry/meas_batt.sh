@@ -1,6 +1,7 @@
 #! /usr/bin/bash
 # first script test to measure battery discharge time
 # version 1.0 - 16/12/22 (add command to disable unnecessary services)
+# version 1.1 - 23/01/23 (change the test of while loop)
 
 echo beginning of script
 
@@ -35,6 +36,8 @@ ITR=1
 BATT=$(talkpp -c B)
 echo $BATT >> batt.txt
 
+# issue when we test battery level value (warn in file text)
+# simple while loop with x iterations
 while [ $ITR -le 200 ]
 do
 	echo $ITR
