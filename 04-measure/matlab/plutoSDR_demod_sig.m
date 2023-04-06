@@ -38,7 +38,7 @@ nb_frame = 10;
 %save signal_lorawan_5p.mat;
 
 %% Recorded signal import
-load signal.mat;
+load signal_lora_4p.mat;
 
 %% Signal channelization (DDC)
 n = length(signal);                    % length of recorded signal
@@ -55,7 +55,7 @@ grid on;
 figure
 Z0 = 50;
 ycur = signal/(2*Z0);
-plot(t0*1e3,1e3*(abs(ycur)));
+plot(t0*1e3,10e3*(abs(ycur)));
 title('Scope of Baseband signal');
 xlabel('time [ms]');
 ylabel('current [mA]');
