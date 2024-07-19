@@ -38,7 +38,8 @@ echo $BATT >> batt.txt
 
 # issue when we test battery level value (warn in file text)
 # simple while loop with x iterations
-while [ $ITR -le 200 ]
+# 288 -> 1 measurement every 5 minutes during one day
+while [ $ITR -le 288 ]
 do
 	echo $ITR
 	BATT=$(talkpp -c B)
